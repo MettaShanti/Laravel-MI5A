@@ -27,6 +27,7 @@
           <p>Navigation</p>
           <span></span>
         </li>
+        <!-- menampilkan halaman Dashboard fakultas, prosi, mahasiswa -->
         <li class="nav-item">
           <a class="nav-link" href="index.html">
             <i class="mdi mdi-view-quilt menu-icon"></i>
@@ -34,6 +35,29 @@
             <div class="badge badge-info badge-pill">2</div>
           </a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{route('fakultas.index')}}">
+            <!--untuk ubah icon -->
+            <i class="mdi mdi-bank menu-icon"></i>
+             <!--akhir icon -->
+            <span class="menu-title">Fakultas</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{route('prodi.index')}}">
+            <!--untuk ubah icon -->
+            <i class="mdi mdi-book-multiple menu-icon"></i>
+             <!--akhir icon -->
+            <span class="menu-title">Prodi</span>
+          </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{route('mahasiswa.index')}}">
+            <i class="mdi mdi-account menu-icon"></i>
+            <span class="menu-title">Mahasiswa</span>
+          </a>
+        </li>
+        <!--akhir-->
         <li class="nav-item sidebar-category">
           <p>Components</p>
           <span></span>
