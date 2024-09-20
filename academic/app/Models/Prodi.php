@@ -11,6 +11,8 @@ class Prodi extends Model
 {
     use HasFactory, HasUuids;
 
+    protected $fillable = ['nama', 'kaprodi', 'singkatan', 'fakultas_id'];
+
     // untuk memanggil query dari tabel lain menggunakan BelongsTo
     public function fakultas(): BelongsTo
     {

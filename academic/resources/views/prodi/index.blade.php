@@ -2,6 +2,7 @@
 
 @section('content')
     <h4>Prodi</h4>
+    <a href="{{route('prodi.create')}}" class="btn btn-primary">TAMBAH</a>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -23,3 +24,4 @@
             </tbody>
         </table>
 @endsection
+
