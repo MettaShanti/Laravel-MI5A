@@ -40,17 +40,17 @@ class ProdiController extends Controller
 
         //validasi input nama imput disamakan dengan tabel kolom
         $input = $request->validate([
-            "nama"      =>"required",
-            "kaprodi"     => "required",
-            "singkatan" => "required",
-            "fakultas" => "required|unique:fakultas"
+            "nama"        =>"required|unique:prodis",
+            "kaprodi"     =>"required",
+            "singkatan"   =>"required",
+            "fakultas_id" =>"required"
         ]);
 
         //simpan
         Prodi::create($input);
 
         //redirect beserta pesan sukses
-        return redirect()->route('prodi.index')->with('success', $request->nama.'Berhasil Disimpan');
+        return redirect()->route('prodi.index')->with('success', $request->nama.' Berhasil Disimpan');
     }
 
     /**

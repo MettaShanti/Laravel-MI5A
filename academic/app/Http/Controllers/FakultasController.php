@@ -47,7 +47,7 @@ class FakultasController extends Controller
         Fakultas::create($input);
 
         //redirect beserta pesan sukses
-        return redirect()->route('fakultas.index')->with('success', $request->nama.'Berhasil Disimpan');
+        return redirect()->route('fakultas.index')->with('success', $request->nama.' Berhasil Disimpan');
     }
 
     /**
@@ -61,9 +61,13 @@ class FakultasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fakultas $fakultas)
+    public function edit( $id)
     {
-        //
+        // edit data
+        $fakultas = Fakultas::find($id);
+        //dd($fakultas);
+        return view('fakultas.edit')->with('fakultas', $fakultas);
+        
     }
 
     /**

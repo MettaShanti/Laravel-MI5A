@@ -10,12 +10,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Prodi extends Model
 {
     use HasFactory, HasUuids;
-
-    protected $fillable = ['nama', 'kaprodi', 'singkatan', 'fakultas_id'];
-
+    protected $fillable = ["nama", "kaprodi", "singkatan", "fakultas_id"];
     // untuk memanggil query dari tabel lain menggunakan BelongsTo
     public function fakultas(): BelongsTo
     {
         return $this->belongsTo(Fakultas::class,'fakultas_id','id');
-    }
+    } 
 }
