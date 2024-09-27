@@ -64,17 +64,35 @@ class ProdiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Prodi $prodi)
+    public function edit($id)
     {
-        //
+        // edit data
+        $prodi = Prodi::find($id);
+        $fakultas = Fakultas::all(); //ditambah ini
+        return view('prodi.edit')->with('prodi', $prodi)->with('fakultas', $fakultas); //ditambah ini
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Prodi $prodi)
+    public function update(Request $request, $id)
     {
-        //
+        $prodi = Prodi::find($id);
+        //dd(vars: $fakultas);
+
+        //validasi input nama imput disamakan dengan tabel kolom
+        $input = $request->validate([
+            "nama"        =>"required",
+            "kaprodi"     =>"required",
+            "singkatan"   =>"required",
+            "fakultas_id" =>"required"
+        ]);
+
+        //update data
+        $prodi->update($input);
+
+        //redirect beserta pesan sukses
+        return redirect()->route('prodi.index')->with('success', $request->nama.' Berhasil Diubah');
     }
 
     /**

@@ -11,6 +11,7 @@
                 <th>Tanggal Lahir</th>
                 <th>Tempat Lahir</th>
                 <th>Prodi</th>
+                <th>#</th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +22,8 @@
                 <td>{{ $row['tanggal_lahir']}}</td>
                 <td>{{ $row['tempat_lahir']}}</td>
                 <td>{{ $row['prodi']['nama']}}</td>
-                <td><a href="{{ route('mahasiswa.show', $row['id'])}}" class="btn btn-primary btn-xs">Show</a></td>
+                <td><a href="{{ route('mahasiswa.show', $row['id'])}}" class="btn btn-primary btn-xs">SHOW</a></td>
+                <td><a href="{{ route('mahasiswa.edit', $row ['id'] )}}" class="btn btn-xs btn-warning">UBAH</a></td>
             </tr>
             @endforeach
             </tbody>

@@ -10,7 +10,7 @@
                 <th>Nama Fakultas</th>
                 <th>Nama Dekan</th>
                 <th>Singkatan</th>
-                <th>#</th>
+                <th>Ubah Data</th>
 
             </tr>
         </thead>
