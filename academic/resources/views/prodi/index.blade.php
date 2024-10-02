@@ -20,7 +20,14 @@
                 <td>{{ $row['kaprodi']}}</td>
                 <td>{{ $row['singkatan']}}</td>
                 <td>{{ $row['fakultas']['nama']}}</td>
-                <td><a href="{{ route('prodi.edit', $row ['id'] )}}" class="btn btn-xs btn-warning">UBAH</a></td>
+                <td><a href="{{ route('prodi.edit', $row ['id'] )}}" class="btn btn-xs btn-warning">UBAH</a>
+                {{-- untuk membuat btn hapus --}}
+                    <form action="{{ route('prodi.destroy', $row['id'])}}" method="post" style="display:inline"> 
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-xs btn-danger">HAPUS</button>
+                    </form>
+                    {{-- style="display:inline" untuk memindahkan btn ke samping --}}</td>
             </tr>
             @endforeach
             </tbody>
