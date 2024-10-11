@@ -111,4 +111,36 @@ class MahasiswaController extends Controller
         $mahasiswa->delete();
         return redirect()->route('mahasiswa.index')->with('succes','Data Mahasiswa Berhasil di Hapus');
     }
+    public function getMahasiswa(){
+       //$response['data'] = Prodi::all();
+        $response['data'] = Mahasiswa::with('prodi.fakultas')->get();
+        $response['message'] = 'List data mahasiswa';
+        $response['success'] = true;
+
+        return response()->json($response, 200);
+    }
+    public function storeFakultas(Request $request){
+         $input = $request->validate([
+            "npm"           =>"required",
+            "nama"          =>"required",
+            "tanggal_lahir" =>"required",
+            "tempat_lahir"  =>"required",
+            "email"         =>"required",
+            "hp"            =>"required",
+            "alamat"        =>"required",
+            "prodi_id"      =>"required",
+        ]);
+
+        //simpan
+        $hasil = Mahasiswa::create($input);
+        if($hasil){// jika berhasil disimpan
+            $response['success'] = true;
+            $response['message'] = $request->nama. " Berhasil Disimpan";
+            return response()->json($response, 201); // 201 create atau sudah berhasil disimpan
+        }else{
+            $response['success'] = false;
+            $response['message'] = $request->nama. " Gagal Disimpan";
+            return response()->json($response, 400); //400 bad request
+        }
+    }
 }

@@ -105,4 +105,12 @@ class ProdiController extends Controller
         $prodi->delete();
         return redirect()->route('prodi.index')->with('succes','Data Prodi Berhasil di Hapus');
     }
+    public function getProdi(){
+       //$response['data'] = Prodi::all();
+        $response['data'] = Prodi::with('fakultas')->get();
+        $response['message'] = 'List data prodi';
+        $response['success'] = true;
+
+        return response()->json($response, 200);
+    }
 }
