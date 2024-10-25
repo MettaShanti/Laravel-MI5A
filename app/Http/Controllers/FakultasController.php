@@ -129,4 +129,20 @@ class FakultasController extends Controller
             return response()->json($response, 400); //400 bad request
         }
     }
+    public function destroyFakultas($id)
+    {
+        // cari data di table fakultas berdasarkan "id" fakultas
+        $fakultas = Fakultas::find($id);
+        //dd($fakultas);
+        $hasil = $fakultas->delete();
+        if($hasil){// jika berhasil disimpan
+            $response['success'] = true;
+            $response['message'] =" Fakultas Berhasil Dihapus";
+            return response()->json($response, 201); // 201 create atau sudah berhasil disimpan
+        }else{
+            $response['success'] = false;
+            $response['message'] =  "Fakultas gagal dihapus";
+            return response()->json($response, 400); //400 bad request
+        }
+    }
 }

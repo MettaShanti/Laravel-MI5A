@@ -13,6 +13,7 @@ Route::get('/user', function (Request $request) {
 // fakultas
 Route::get("fakultas", [FakultasController::class, 'getFakultas']);
 Route::post("fakultas", [FakultasController::class, 'storeFakultas']);
+Route::delete("fakultas/{id}",[FakultasController::class, 'destroyFakultas']);
 
 //prodi
 Route::get("prodi", [ProdiController::class, 'getProdi']);
