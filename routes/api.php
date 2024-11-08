@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
@@ -22,3 +23,9 @@ Route::post("prodi", [ProdiController::class, 'storeProdi']);
 //mahasiswa
 Route::get("mahasiswa", [MahasiswaController::class, 'getMahasiswa']);
 Route::post("mahasiswa", [ProdiController::class, 'storeMahasiswa']);
+
+//regis
+Route::post('register', [AuthController::class, 'register']);
+
+//login
+Route::post('login', [AuthController::class, 'login']);
