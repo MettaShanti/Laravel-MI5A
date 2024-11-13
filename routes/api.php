@@ -13,8 +13,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // fakultas
-Route::get("fakultas", [FakultasController::class, 'getFakultas']);
-Route::post("fakultas", [FakultasController::class, 'storeFakultas']);
+Route::get("fakultas", [FakultasController::class, 'getFakultas'])->middleware('auth:sanctum');
+Route::post("fakultas", [FakultasController::class, 'storeFakultas'])->middleware('auth:sanctum');
 Route::delete("fakultas/{id}",[FakultasController::class, 'destroyFakultas']);
 
 //prodi
