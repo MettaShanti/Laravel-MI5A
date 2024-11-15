@@ -13,8 +13,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // fakultas
-Route::get("fakultas", [FakultasController::class, 'getFakultas'])->middleware('auth:sanctum');
-Route::post("fakultas", [FakultasController::class, 'storeFakultas'])->middleware('auth:sanctum');
+Route::get("fakultas", [FakultasController::class, 'getFakultas'])->middleware('auth:sanctum', 'ability:read');
+Route::post("fakultas", [FakultasController::class, 'storeFakultas'])->middleware('auth:sanctum','ability:create');
 Route::delete("fakultas/{id}",[FakultasController::class, 'destroyFakultas']);
 
 //prodi
@@ -23,7 +23,7 @@ Route::post("prodi", [ProdiController::class, 'storeProdi']);
 
 //mahasiswa
 Route::get("mahasiswa", [MahasiswaController::class, 'getMahasiswa']);
-Route::post("mahasiswa", [ProdiController::class, 'storeMahasiswa']);
+Route::post("mahasiswa", [MahasiswaController::class, 'storeMahasiswa']);
 
 //regis
 //Route::post('register', [AuthController::class, 'register']);

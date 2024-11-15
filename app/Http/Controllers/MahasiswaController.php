@@ -119,7 +119,7 @@ class MahasiswaController extends Controller
 
         return response()->json($response, 200);
     }
-    public function storeFakultas(Request $request){
+    public function storeMahasiswa(Request $request){
          $input = $request->validate([
             "npm"           =>"required",
             "nama"          =>"required",
@@ -129,10 +129,18 @@ class MahasiswaController extends Controller
             "hp"            =>"required",
             "alamat"        =>"required",
             "prodi_id"      =>"required",
+            "foto"      =>"nullable|image|mimes:jpg,jpeg,png,webp|max:2048"
         ]);
 
+        //cek apakah ada file fotoyang diupload
+        if($request->hasFile('foto'))
+        //upload foto ke folde 'image;
+        $fotoPath = $request->file('foto')->store('image','public');
+        //menambahkan path foto ke input data
+        $input['foto'] = $fotoPath;
+
         //simpan
-        $hasil = Mahasiswa::create($input);
+        $hasil=Mahasiswa::create($input);
         if($hasil){// jika berhasil disimpan
             $response['success'] = true;
             $response['message'] = $request->nama. " Berhasil Disimpan";
@@ -143,4 +151,6 @@ class MahasiswaController extends Controller
             return response()->json($response, 400); //400 bad request
         }
     }
+    
+        
 }

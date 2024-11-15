@@ -34,6 +34,14 @@ public function login(Request $request)
         'password' => $request->password
     ])) {
         $user = Auth::user(); // ambil data user dari table users sesuai dengan email  dan pass
+
+        //untuk pemberian hak akses
+        if($user->role == 'admin'){
+            $success['token'] = $user->createToken('MDPApp',['create','read','update','delete'])->plainTextToken; // buat token
+        }else{
+            $success['token'] = $user->createToken('MDPApp',['read'])->plainTextToken; // buat token
+        }
+
         $success['token'] = $user->createToken('MDPApp')->plainTextToken; // buat token
         $success['name'] = $user->name;// response nama user
         return response()->json($success, 201);
