@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mahasiswa extends Model
 {
     use HasFactory, HasUuids;
-    protected $fillable = ["npm","nama","tanggal_lahir","tempat_lahir","email","hp","alamat","prodi_id"];
+    protected $fillable = ["npm","nama","tanggal_lahir","tempat_lahir","email","hp","alamat","prodi_id","foto"];
 
     public function prodi()
     {

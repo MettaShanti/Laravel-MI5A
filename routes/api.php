@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
+
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProdiController;
@@ -12,8 +13,8 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 // fakultas
-Route::get("fakultas", [FakultasController::class, 'getFakultas']);
-Route::post("fakultas", [FakultasController::class, 'storeFakultas']);
+Route::get("fakultas", [FakultasController::class, 'getFakultas'])->middleware('auth:sanctum', 'ability:read');
+Route::post("fakultas", [FakultasController::class, 'storeFakultas'])->middleware('auth:sanctum','ability:create');
 Route::delete("fakultas/{id}",[FakultasController::class, 'destroyFakultas']);
 
 //prodi
@@ -22,10 +23,10 @@ Route::post("prodi", [ProdiController::class, 'storeProdi']);
 
 //mahasiswa
 Route::get("mahasiswa", [MahasiswaController::class, 'getMahasiswa']);
-Route::post("mahasiswa", [ProdiController::class, 'storeMahasiswa']);
+Route::post("mahasiswa", [MahasiswaController::class, 'storeMahasiswa']);
 
 //regis
-Route::post('register', [AuthController::class, 'register']);
+//Route::post('register', [AuthController::class, 'register']);
 
 //login
 Route::post('login', [AuthController::class, 'login']);
