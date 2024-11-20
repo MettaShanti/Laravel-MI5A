@@ -130,6 +130,7 @@ class FakultasController extends Controller
             return response()->json($response, 400); //400 bad request
         }
     }
+
     public function destroyFakultas($id)
     {
         // cari data di table fakultas berdasarkan "id" fakultas
@@ -146,4 +147,29 @@ class FakultasController extends Controller
             return response()->json($response, 400); //400 bad request
         }
     }
+
+    public function updateFakultas(Request $request,$id)
+    {
+        $fakultas = Fakultas::find($id);
+        //validasi input nama imput disamakan dengan tabel kolom
+        $input = $request->validate([
+            "nama"      =>"required",
+            "dekan"     =>"required",
+            "singkatan" =>"required"
+        ]);
+
+        //update data
+        $hasil = $fakultas->update($input);
+
+        if($hasil){// jika berhasil disimpan
+            $response['success'] = true;
+            $response['message'] =" Fakultas Berhasil Diubah";
+            return response()->json($response, 201); // 201 create atau sudah berhasil disimpan
+        }else{
+            $response['success'] = false;
+            $response['message'] =  "Fakultas gagal diubah";
+            return response()->json($response, 400); //400 bad request
+        }
+    }
+
 }
