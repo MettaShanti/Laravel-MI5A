@@ -8,9 +8,7 @@ use App\Http\Controllers\ProdiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/user', function (Request $request) {return $request->user();})->middleware('auth:sanctum');
 
 // fakultas
 Route::get("fakultas", [FakultasController::class, 'getFakultas']);//->middleware('auth:sanctum', 'ability:read');
