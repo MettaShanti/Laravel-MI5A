@@ -21,15 +21,22 @@ export default function List(){
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Nama</th>
-                        <th>Fakultas</th>
+                    <th>Nama</th>
+                    <th>Npm</th>
+                    <th>Email</th>
+                    <th>No Hp</th>
+                    <th>Alamat</th>
                     </tr>
                 </thead>
                 <tbody>
                     {mahasiswa.map( (data) => (
                         <tr key={data.id}>
-                            <td>{data.nama}</td>
-                        </tr>
+                        <td>{data.nama}</td>
+                        <td>{data.npm}</td>
+                        <td>{data.email}</td>
+                        <td>{data.hp}</td>
+                        <td>{data.alamat}</td>
+                    </tr>
                     ) )}
                 </tbody>
             </table>

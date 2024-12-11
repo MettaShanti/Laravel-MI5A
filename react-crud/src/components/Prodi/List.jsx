@@ -21,15 +21,20 @@ export default function List(){
             <table className="table">
                 <thead>
                     <tr>
+                        <th>Id</th>
                         <th>Nama</th>
-                        <th>Fakultas</th>
+                        <th>Kaprodi</th>
+                        <th>Singkatan</th>
+                        <th>Nama Fakultas</th>
                     </tr>
                 </thead>
                 <tbody>
                     {prodi.map( (data) => (
                         <tr key={data.id}>
                             <td>{data.nama}</td>
-                            <td>{data.ket}</td>
+                            <td>{data.kaprodi}</td>
+                            <td>{data.singkatan}</td>
+                            {/* <td>{data.fakultas_id}</td> */}
                         </tr>
                     ) )}
                 </tbody>
