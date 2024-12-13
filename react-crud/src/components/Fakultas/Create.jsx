@@ -6,10 +6,13 @@ import axios from "axios"; // Import axios untuk melakukan HTTP request
 export default function CreateFakultas() {
   // Inisialisasi state untuk menyimpan nama fakultas
   const [namaFakultas, setNamaFakultas] = useState("");
+  const [dekan, setNamaDekan] = useState("");
+  const [singkatan, setNamaSingkatan] = useState("");
+
   // Inisialisasi state untuk menyimpan pesan error
-  const [dekan, setDekan] = useState("");
+  const [error, setError] = useState("");
   // Inisialisasi state untuk menyimpan pesan sukses
-  const [singkatan, setSingkatan] = useState("");
+  const [success, setSuccess] = useState("");
 
   // Fungsi yang akan dijalankan saat form disubmit
   const handleSubmit = async (e) => {
@@ -22,12 +25,14 @@ export default function CreateFakultas() {
       setError("Nama Fakultas is required"); // Set pesan error jika input kosong
       return; // Stop eksekusi fungsi jika input tidak valid
     }
+    
     if (dekan.trim() === "") {
-        setError("Dekan is required"); // Set pesan error jika input kosong
-        return; // Stop eksekusi fungsi jika input tidak valid
+      setError("Nama Dekan is required"); // Set pesan error jika input kosong
+      return; // Stop eksekusi fungsi jika input tidak valid
     }
+
     if (singkatan.trim() === "") {
-        setError("Singkatan is required"); // Set pesan error jika input kosong
+        setError("Nama Singkatan is required"); // Set pesan error jika input kosong
         return; // Stop eksekusi fungsi jika input tidak valid
     }
 
@@ -46,9 +51,7 @@ export default function CreateFakultas() {
       if (response.status === 201) {
         // Tampilkan pesan sukses jika fakultas berhasil dibuat
         setSuccess("Fakultas created successfully!");
-        setNamaFakultas(""); 
-        setDekan("");
-        setSingkatan("");// Kosongkan input form setelah sukses submit
+        setNamaFakultas(""); // Kosongkan input form setelah sukses submit
       } else {
         // Jika tidak berhasil, tampilkan pesan error
         setError("Failed to create fakultas");
@@ -75,7 +78,7 @@ export default function CreateFakultas() {
           </label>
           {/* Input untuk nama fakultas dengan class bootstrap */}
           <input
-            type="text" className="form-control" id="namaFakultas"
+            type="text" className="form-control" id="Fakultas"
             value={namaFakultas} // Nilai input disimpan di state namaFakultas
             onChange={(e) => setNamaFakultas(e.target.value)} // Update state saat input berubah
             placeholder="Enter Fakultas Name" // Placeholder teks untuk input
@@ -83,32 +86,33 @@ export default function CreateFakultas() {
         </div>
         <div className="mb-3">
           <label className="form-label">
-            Dekan
+            Nama Dekan
           </label>
-          {/* Input untuk nama fakultas dengan class bootstrap */}
+          {/* Input untuk nama nama dekan dengan class bootstrap */}
           <input
             type="text" className="form-control" id="dekan"
             value={dekan} // Nilai input disimpan di state namaFakultas
-            onChange={(e) => setDekan(e.target.value)} // Update state saat input berubah
-            placeholder="Enter dekan Name" // Placeholder teks untuk input
+            onChange={(e) => setNamaDekan(e.target.value)} // Update state saat input berubah
+            placeholder="Enter Dekan Name" // Placeholder teks untuk input
           />
         </div>
         <div className="mb-3">
           <label className="form-label">
-            Singkatan
+            Nama Singkatan
           </label>
           {/* Input untuk nama fakultas dengan class bootstrap */}
           <input
             type="text" className="form-control" id="singkatan"
             value={singkatan} // Nilai input disimpan di state namaFakultas
-            onChange={(e) => setSingkatan(e.target.value)} // Update state saat input berubah
-            placeholder="Enter singkatan Name" // Placeholder teks untuk input
+            onChange={(e) => setNamaSingkatan(e.target.value)} // Update state saat input berubah
+            placeholder="Enter Singkatan Name" // Placeholder teks untuk input
           />
         </div>
+
         <button type="submit" className="btn btn-primary">
           Create
         </button>
       </form>
-    </div>
-  );
-}
+    </div>
+  );
+  }

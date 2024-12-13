@@ -23,7 +23,6 @@ export default function List(){
             <table className="table">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nama</th>
                         <th>Dekan</th>
                         <th>Singkatan</th>
