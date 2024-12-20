@@ -68,13 +68,13 @@ const handleDelete = (id, nama) => {
                     <td>{data.nama}</td>
                     <td>{data.kaprodi}</td>
                     <td>{data.singkatan}</td>
-                    <td>{data.fakultas_id}</td>
-                    <NavLink to={`/fakultas/edit/${data.id}`}
-                    className="btn btn-warning">Edit
-                    </NavLink>
+                    <td>{data.fakultas.nama}</td>
+                    <td>
+                    <NavLink to={`/prodi/edit/${data.id}`}
+                                className="btn btn-warning">Edit</NavLink>
                     <button onClick={() => handleDelete(data.id, data.nama)}
-                        className="btn btn-danger"> Delete
-                    </button>
+                                className="btn btn-danger"> Delete</button>
+                  </td>
                 </tr>
                 ) )}
             </tbody>
