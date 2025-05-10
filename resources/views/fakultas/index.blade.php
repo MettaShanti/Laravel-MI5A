@@ -37,3 +37,5 @@
         </table>
 @endsection
 
+onclick="return confirm('Yakin ingin hapus data ini?')"
+

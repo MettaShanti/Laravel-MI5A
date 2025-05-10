@@ -6,6 +6,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>No</th>
                 <th>Nama Prodi</th>
                 <th>Nama Kaprodi</th>
                 <th>Singkatan</th>
