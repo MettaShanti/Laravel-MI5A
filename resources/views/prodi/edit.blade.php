@@ -29,7 +29,7 @@
     @enderror 
     <select name="fakultas_id" class="form-control">
         @foreach ($fakultas as $item)
-            <option value="{{ $item['id'] }}" {{$item['id'] == $prodi['fakultas_id'] ? "selected":null}}> {{ $item['nama'] }} </option>
+            <option value="{{ $item['id'] }}" {{ $item['id'] == $prodi['fakultas_id'] ? "selected" : null }}> {{ $item['nama'] }} </option>
         @endforeach
     </select>
 
